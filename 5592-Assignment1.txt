@@ -1,0 +1,155 @@
+1.
+Solution:
+PROGRAM SumOfNumbers:
+	Read Num1;
+	Read Num2;
+	Sum = Num1 + Num2;
+	Print Sum;
+END.
+
+2.
+Solution:
+PROGRAM EvenNumbers1To100:
+	Counter = 1;
+	WHILE (Counter <= 100)
+		IF (Counter % 2 ==0)
+			THEN Print Counter;
+		ENDIF;
+		Counter++;
+	ENDWHILE;
+END.
+
+3.
+Solution:
+PROGRAM CheckLeapYear:
+	Read Year;
+	IsLeap = False;
+	IF (Year % 4 == 0)
+		IsLeap = True;
+	ENDIF;
+	IF (IsLeap == True)
+		THEN Print "Leap Year";
+	ELSE Print "Not Leap Year";
+END.
+
+4. 
+Solution:
+PROGRAM KilometersToMilesPerHour:
+	Read Kilometers;
+	Mile = 0.621371;
+	MilesPerHours = Kilometers * Mile;
+	Print MilesPerHours;
+END.
+
+5. 
+Solution:
+PROGRAM CheckBuzzNumber:
+	Read Num;
+	IsBuzz = False;
+	IF (Num % 7 == 0 or Num % 10 == 7)
+		THEN IsBuzz = True;
+	ENDIF;	
+	IF (IsBuzz == True)
+		THEN Print "Buzz";
+	ELSE Print "Not Buzz";
+	ENDIF;
+END.
+
+6.
+Solution:
+PROGRAM TableOfNum:
+	Read Num;
+	Counter = 1;
+	IF (Num == 0)
+		THEN Print "Table of zero doesn't exist";
+	ELSE
+		WHILE (Counter <= 10)
+			Print Num "*" Counter "=" Num * Counter;
+		ENDWHILE;
+	ENDIF;
+END.
+
+7.
+Solution:
+PROGRAM Factorial:
+	Read Num;
+	Factorial = 1;
+	IF (Num <=0)
+		THEN Print "Factorial doesn't exist";
+	ELSE
+		FOR (Counter = 1; Counter <= Num; Counter++)
+			Factorial = Factorial * Counter;
+		ENDFOR;
+	ENDIF;
+	Print Factorial;
+END.
+
+8.
+Solution:
+PROGRAM CheckPrimeNumber:
+	Read Num;
+	Counter = 2;
+	IsPrime = True;
+	WHILE (Counter <= Num/2 )
+		IF (Num % Counter == 0)
+			THEN IsPrime = False;
+			Counter++;
+
+		ENDIF;
+	ENDWHILE;
+	IF (IsPrime == True)
+		Print "Prime";
+	ELSE Print "Not Prime";
+	ENDIF;
+END. 
+
+9.
+Solution:
+PROGRAM CheckTriangle:
+	Read Side1, Side2, Side3;
+	IF (Side1 == Side2 or Side2 == Side3 or Side1 == Side3)
+		THEN Print "Isosceles Triangle";
+	IF (Side1 == Side2 and Side1 == Side3)
+		THEN Print "Equilateral Triangle";
+	ELSE Print "Scalene Triangle";
+	ENDIF;
+
+END.
+
+10.
+Solution1:
+PROGRAM Pattern:
+	Print "*";
+	Print "**";
+	Print "***";
+	Print "****";
+	Print "*****";
+END.
+Solution2:
+PROGRAM Pattern:
+	FOR (Counter1 = 1; Counter1 <= 5; Counter1++)
+		FOR (Counter2 = 1; Counter2 <= Counter1 ; Counter2++)
+			Print "*";
+		ENDFOR;
+		Print "\n";
+
+	ENDFOR;
+END.
+
+BONUS
+Solution:
+PROGRAM CheckPalindrome:
+	Read Num;
+	Reverse = 0;
+	Result = 0;
+	WHILE (NUM != 0)
+		Result = Num % 10; 
+		Reverse = Reverse * 10;
+		Reverse = Reverse + Result;
+		Num = Num / 10;
+	ENDWHILE;
+	IF (Num == Reverse)
+		THEN Print "Palindrome";
+	ELSE Print "Not Palindrome";
+	ENDIF;
+END.
