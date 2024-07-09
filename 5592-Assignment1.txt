@@ -93,9 +93,9 @@ PROGRAM CheckPrimeNumber:
 	WHILE (Counter <= Num/2 )
 		IF (Num % Counter == 0)
 			THEN IsPrime = False;
-			Counter++;
 
 		ENDIF;
+		Counter++;
 	ENDWHILE;
 	IF (IsPrime == True)
 		Print "Prime";
@@ -107,10 +107,10 @@ END.
 Solution:
 PROGRAM CheckTriangle:
 	Read Side1, Side2, Side3;
-	IF (Side1 == Side2 or Side2 == Side3 or Side1 == Side3)
-		THEN Print "Isosceles Triangle";
 	IF (Side1 == Side2 and Side1 == Side3)
 		THEN Print "Equilateral Triangle";
+	ELSE IF (Side1 == Side2 or Side2 == Side3 or Side1 == Side3)
+		THEN Print "Isosceles Triangle";
 	ELSE Print "Scalene Triangle";
 	ENDIF;
 
@@ -142,11 +142,12 @@ PROGRAM CheckPalindrome:
 	Read Num;
 	Reverse = 0;
 	Result = 0;
-	WHILE (NUM != 0)
-		Result = Num % 10; 
+	Temp = Num;
+	WHILE (Temp != 0)
+		Result = Temp % 10; 
 		Reverse = Reverse * 10;
 		Reverse = Reverse + Result;
-		Num = Num / 10;
+		Temp = Temp / 10;
 	ENDWHILE;
 	IF (Num == Reverse)
 		THEN Print "Palindrome";
