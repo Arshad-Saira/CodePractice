@@ -26,6 +26,28 @@ namespace MyApp
             Console.WriteLine($"largest: {largest}, Second Largest: {secLargest}  , {nums.Length}");
 
         }
+
+        //Question7
+        static void CheckArmstrong(int num)
+        {
+            int originalNum = num, temp = 0, digit;
+
+            while(num != 0)
+            {
+                digit = num % 10;
+                temp += (digit * digit * digit);
+                num /= 10;
+            }
+            Console.WriteLine(temp);
+            if(temp == originalNum)
+            {
+                Console.WriteLine($"{originalNum} is a Armstrong number.");
+            }
+            else
+            {
+                Console.WriteLine($"{originalNum} is not a Armstrong number.");
+            }
+        }
         //Question9
         static void Fabonacci(int terms)
         {
@@ -74,8 +96,9 @@ namespace MyApp
             Console.WriteLine("Hello World!");
             //Fabonacci(5);
             //CheckNumbers();
-            int[] arr = {5, 9, 3, 6};
-            largestSecondLargest(arr);
+            /*int[] arr = {5, 9, 3, 6};
+            largestSecondLargest(arr);*/
+            CheckArmstrong(93084); //  check 93084 case not handled
         }
     }
 }
