@@ -1,0 +1,64 @@
+
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+
+public class HelloWorld
+{
+    class Book{
+        string title;
+        string author;
+        string bookId;
+        public Book(){
+            title = "CSS";
+            author = "Saira";
+            bookId = "CS-01";
+        }
+        public void Display(){
+            Console.WriteLine($"Title: {title} \nAuthor: {author} \nBook ID: {bookId}" );
+        }
+    }
+    class Person{
+        string name;
+        int age;
+        string personId;
+    }
+    class Library : Book{
+        string name;
+        string libraryId;
+        List<Book> bookStore = new List<Book>();
+        public void addBook(Book book)
+        {
+           bookStore.Add(book);
+        }
+        public void removeBook(string bookId){
+            foreach(Book book in bookStore)
+            {
+                if(book.bookId == bookId)
+                {
+                    Console.WriteLine("Book removed" );
+                }
+                else
+                {
+                    Console.WriteLine("Book with given id doesn't exist" );
+                }
+            }
+        }
+        public void viewBooks(){
+            foreach(Book book in bookStore)
+            {
+                Console.WriteLine($"Title: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId}" );
+            }
+        }
+    }
+    class Program{
+        public static void Main(string[] args)
+        {
+            Console.WriteLine ("Try programiz.pro");
+            Book myObj = new Book();
+            myObj.Display(); 
+        } 
+    }
+    
+}
