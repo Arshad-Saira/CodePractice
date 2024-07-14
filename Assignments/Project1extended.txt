@@ -1,0 +1,234 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+using System.Collections.Generic;
+namespace MyApp
+{
+    abstract class Book
+    {
+
+        public string title;
+        public string author;
+        public string bookId;
+        public bool isIssued = false;
+        public Book()
+        {
+            title = "CSS";
+            author = "Saira";
+            bookId = "001";
+        } 
+        public Book(string title, string author, string bookId, bool isIssued = false)
+        {
+            this.title = title;
+            this.author = author;
+            this.bookId = bookId;
+            this.isIssued = true;
+        }
+        public abstract void DisplayInfo(Book book);
+    }
+    
+    class FictionBook : Book
+    {
+        public FictionBook(string title, string author, string bookId, bool isIssued = false) : base(title, author, bookId) {}
+        public override void DisplayInfo(Book book)
+        {
+            Console.WriteLine($"Fictional Book \nTitle: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId}");
+        }
+    }
+    
+    class NonFictionBook : Book
+    {
+        public NonFictionBook(string title, string author, string bookId, bool isIssued) : base(title, author, bookId, isIssued = false) {}
+        public override void DisplayInfo(Book book)
+        {
+            Console.WriteLine($"Non-Fictional Book \nTitle: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId}");
+        }
+    }
+    
+    class Person
+    {
+        public string name;
+        public int age;
+        public string personId;
+        public Person(string name, int age, string personId){
+            this.name = name;
+            this.age = age;
+            this.personId = personId;
+        }
+    }
+    class Librarian : Person
+    {
+        string employeeId;
+        public Librarian(string name, int age, string personId) : base(name, age, personId){}
+        static void issueBook(Book book, Person user)
+        {
+            //code here
+        }
+        static void returnBook(Book book, Person user)
+        {
+            //code here
+        }
+    }
+    class Library
+    {
+        string name;
+        string libraryId;
+        List<Book> bookStore = new List<Book>();
+        Librarian librarian;
+        //string section;
+        public Library(string name = "Library", string libraryId = "1")
+        {
+            this.name = name;
+            this.libraryId = libraryId;
+        }
+        public void addBook(Book book)
+        {
+            bookStore.Add(book);
+            Console.WriteLine("Book added");
+        }
+        public void removeBook(string bookId)
+        {
+            foreach (Book book in bookStore)
+            {
+                if (book.bookId == bookId)
+                {
+                    bookStore.Remove(book);
+                    Console.WriteLine($"Book removed {bookStore}");
+                    return;
+                }
+            }
+            Console.WriteLine($"Book with given ID {bookId} does not exist in library.");
+        }
+        public void viewBooks()
+        {
+            Console.WriteLine("View all books available in Library:\n");
+            foreach (Book book in bookStore)
+            {
+                Console.WriteLine($"Title: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId} \n ----");//DisplayInfo(book);
+            }
+        }
+        public void searchBook(string title)
+        {
+            bool isFound = false;
+            foreach(Book book in bookStore)
+            {
+                if(book.title == title)
+                {
+                    Console.WriteLine($"Title: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId} \n ----");//DisplayInfo(book);
+                    isFound = true;
+                }
+            }
+            if(!isFound)
+            {
+                Console.WriteLine($"Book with title \'{title}\' does not exists.");
+            }
+            
+        }
+        public void listIssuedBooks()
+        {
+            foreach(Book book in bookStore)
+            {
+                if(book.isIssued == true)
+                {
+                    Console.WriteLine($"Title: {book.title} \nAuthor: {book.author} \nBook ID: {book.bookId}");
+                }
+            }
+            return;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Library Management System\n\n");
+            
+           // FictionBook book1 = new FictionBook();
+            // NonFictionBook book2 = new NonFictionBook("It's life", "William Shakespeare", "002", false );
+            // NonFictionBook book3 = new NonFictionBook("Reclaim your heart","Yasmeen Mujahid", "003", false );
+            // FictionBook book4 = new FictionBook("Rich dad, Poor dad","Nelson", "004", false );
+            // FictionBook book5 = new FictionBook("It's a life","Anonymous", "005", false );
+            Library library = new Library();
+            
+            // library.addBook(book1);
+            /*library.addBook(book2);
+            library.addBook(book3);
+            library.addBook(book4);
+            library.addBook(book5);*/
+
+
+
+            bool isDone = true;
+            while (isDone)
+            {
+                Console.WriteLine("What do you want to do?" +
+                "\n 1.Add Book" +
+                "\n 2.View Books" +
+                "\n 3.Remove Book" +
+                "\n 4.Search Book" +
+                "\n 5.List issued Books" +
+                "\n 6.Issue Book" +
+                "\n 7.Return Book");
+                int task = int.Parse(Console.ReadLine());
+                switch (task)
+                {
+                    case 1:
+                        Console.WriteLine("Which type of book do you want to add? \n1.Fiction\n2.NonFiction");
+                        int type = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter title of the Book:");
+                        string bookTitle = Console.ReadLine();
+                        Console.WriteLine("Enter author of the Book:");
+                        string bookAuthor = Console.ReadLine();
+                        Console.WriteLine("Enter book ID:");
+                        string bookId = Console.ReadLine();
+                        if(type == 1)
+                        {
+                            FictionBook book = new FictionBook(bookTitle, bookAuthor, bookId, false);
+                            library.addBook(book);
+                        }
+                        else
+                        {
+                            NonFictionBook book = new NonFictionBook(bookTitle, bookAuthor, bookId, false);
+                            library.addBook(book);
+                        }
+                        break;
+                    case 2:
+                        library.viewBooks();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter book ID to remove a book: ");
+                        string Id = Console.ReadLine();
+                        library.removeBook(Id);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter title of the book you want to search: ");
+                        string title = Console.ReadLine(); 
+                        library.searchBook(title);
+                        break;
+                    case 5:
+                        library.listIssuedBooks();
+                        break;
+                    // case 6:
+                    //     break;
+                    // case 7:
+                    //     break;
+                    default:
+                        Console.WriteLine("Invalid Option Selected.Please Try Again with correct option.");
+                        break;
+                }
+                Console.WriteLine("Do you want to continue?(Y/N): ");
+                char option = Convert.ToChar(Console.ReadLine());
+                if(option == 'Y')
+                    isDone = true;
+                else if(option == 'N')
+                {
+                    isDone = false;
+                    Console.WriteLine("Bye Bye!");
+                }
+                else
+                    Console.WriteLine("Invalid Option Selected.");
+                    isDone = true;
+            }
+        }
+    }
+}
