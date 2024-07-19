@@ -4,7 +4,9 @@
 	<title>My Online Bookstore</title>
 	<link rel="stylesheet" href="index.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="index.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="data.json"></script>
 </head>
 <body>
 	<header>Welcome to My Online Bookstore</header>
@@ -13,13 +15,10 @@
 		<a href="#books">Books</a>
 		<a href="#contact">Contact</a>
 	<div class="search">
-		<form>
-			<input type="text" placeholder = "Search.." >
-			<button type="submit" class="searchbtn"><i class="fa fa-search"></i></button>
-		</form>
+		<input class="searchInput" type="text" placeholder = "Search Book.." >
 	</div>
 	</nav>
-	<div class ="innermain left">
+	<div class ="innermain">
 	<section>
 		<h1>Featured Books</h1>
 		<img src ="reclaimYourHeart.png" alt="Book Cover Image" class="center"/>
@@ -38,61 +37,19 @@
 		</p><hr>
 		<h1> List of Books</h1>
 		<table id = "books" border = "1px solid #000" class="centerTable">
+		<thead>
 			<tr class="tableHeader">
 				<th>Title</th>
 				<th>Author</th>
 				<th>Price</th>
 			</tr>
-			<tr>
-				<td>Reclaim Your Heart</td>
-				<td>Yasmin Mogahed</td>
-				<td>999</td>
-			</tr>
-			<tr>
-				<td>Rich Dad, Poor Dad</td>
-				<td>Robert Kiyosaki</td>
-				<td>1099</td>
-			</tr>
-			<tr>
-				<td>The Psychology of Money</td>
-				<td>Morgan Housel</td>
-				<td>1499</td>
-			</tr>
-			<tr>
-				<td>As You Like it</td>
-				<td>William Shakespeare</td>
-				<td> 1299</td>
-			</tr>
-			<tr>
-				<td>It's Life</td>
-				<td>Robert Kiyosaki</td>
-				<td> 1999</td>
-			</tr><tr>
-				<td>Reclaim Your Heart</td>
-				<td>Yasmin Mogahed</td>
-				<td>999</td>
-			</tr>
-			<tr>
-				<td>Rich Dad, Poor Dad</td>
-				<td>Robert Kiyosaki</td>
-				<td>1099</td>
-			</tr>
-			<tr>
-				<td>The Psychology of Money</td>
-				<td>Morgan Housel</td>
-				<td>1499</td>
-			</tr>
-			<tr>
-				<td>As You Like it</td>
-				<td>William Shakespeare</td>
-				<td> 1299</td>
-			</tr>
-			<tr>
-				<td>It's Life</td>
-				<td>Robert Kiyosaki</td>
-				<td> 1999</td>
-			</tr>
+		</thead>
+		<tbody>
+		</tbody>
 		</table>
+		<span class="load">
+			<a href="#"></a>
+		</span>
 	</section>
 	<hr>
 	<section class="about">
@@ -126,9 +83,9 @@
 		<p>Amazing!I feel so thankful. Love the writer's perception.</p>
 	</div>
 	</section>
-	<section><hr>
+	<section class="contactUs"><hr>
 	<h1 id="contact">Contact Us</h1>
-	<form class="ContactUs">
+	<form>
 	<label>Name</label>
 	<input type="text" placeholder="Enter name.."><br>
 	<label>Email</label>

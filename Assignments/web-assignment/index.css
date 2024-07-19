@@ -27,22 +27,22 @@ nav a:hover{
 }
 .search{
 	float: right;
+	margin: 0 25px 0 0;
+	overflow:hidden;
+	line-height: 60px;
 }
 .search input{
 	font-size:13px;
 	border: none;
 	border-radius:5px;
 	padding: 8px;
-	margin
-}
-.searchbtn{
 	float: right;
-	pointer: cursor;
-	padding: 4px 6px;
-	border: none;
-	margin-top: 8px;
-	margin-right:16px;
-	font-size:13px;
+}
+
+.load a{
+	color: black;
+	float:right;
+	text-decoration: none;
 }
 
 h1
@@ -90,12 +90,13 @@ p.para{
 }
 table{
 	border-collapse: collapse;
+	padding: 12px;
+	width: 70%;
 	}
-th, td{
+th, td, tr{
 	padding: 12px;
 	width: 25%;
-}
-		
+}		
 .centerTable {
 	margin: auto;
 }
@@ -136,7 +137,7 @@ button:hover{
 	color: #fff;
 }
 
-form .ContactUs{
+.contactUs form{
 	width:30%;
 	margin: auto;
 }

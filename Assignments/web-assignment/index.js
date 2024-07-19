@@ -1,114 +1,178 @@
-[
-	{
-		book : "Reclaim Your Heart",
-		id: 1,
-		author: "Yasmin Mogahed",
-		price: 1499
-	},
-	{
-		book : "Rich Dad, Poor Dad",
-		id: 2,
-		author: "Robert Kiyosaki",
-		price: 999
-	},{
-		book : "The Psychology of Money",
-		id: 3,
-		author: "Morgan Housel",
-		price: 1199
-	},
-	{
-		book : "As You Like it",
-		id: 4,
-		author: "William Shakespeare",
-		price: 1599
-	},{
-		book : "It's Life",
-		id: 5,
-		author: "Robert Kiyosaki",
-		price: 999
-	},
-	{
-		book : "Five Truths",
-		id: 6,
-		author: "Morgan Housel",
-		price: 1599
-	},{
-		book : "Master your Mind",
-		id: 7,
-		author: "Anonymous",
-		price: 1499
-	},
-	{
-		book : "Fake People",
-		id: 8,
-		author: "William Shakespeare",
-		price: 1199
-	},{
-		book : "You may know",
-		id: 9,
-		author: "Jim Collins",
-		price: 999
-	},
-	{
-		book : "You are best",
-		id: 10,
-		author: "Anonymous",
-		price: 1999
-	},{
-		book : "Be You",
-		id: 11,
-		author: "Yasmin Mogahed",
-		price: 1670
-	},
-	{
-		book : "Treasure Island",
-		id: 12,
-		author: "Robert Louis",
-		price: 1449
-	},{
-		book : "Pride and Prejudice",
-		id: 13,
-		author: "Jane Austin",
-		price: 1149
-	},
-	{
-		book : "Adventures of Tom Sawyer",
-		id: 14,
-		author: "Mark Twain",
-		price: 1499
-	},{
-		book : "A Tale of Two Cities",
-		id: 15,
-		author: "Charles Dickens",
-		price: 1799
-	},
-	{
-		book : "Great Expections",
-		id: 16,
-		author: "Charles Dickens",
-		price: 1999
-	},{
-		book : "Oliver Twist",
-		id: 17,
-		author: "Charles Dickens",
-		price: 1499
-	},
-	{
-		book : "Return of King",
-		id: 18,
-		author: "Tolkien",
-		price: 1099
-	},{
-		book : "The Three Musketeers",
-		id: 19,
-		author: "Alexandre Dumas",
-		price: 1699
-	},
-	{
-		book : "War and Peace",
-		id: 20,
-		author: "Leo Tolstoy",
-		price: 1999
-	},
+// $(document).ready(async function getData() {
+  // const url = "https://jsonplaceholder.typicode.com/posts";
+  // try {
+    // const response = await fetch(url);
+    // if (!response.ok) {
+      // throw new Error(`Response status: ${response.status}`);
+    // }
 	
-]
+	
+    // const json = await response.json();
+	// let output = "<tr>";
+    // for (let i = 0; i < 10; i++) {
+    // output += "<td>" + json[i].title + "</td>" + 
+	// "<td>" + json[i].id + "</td>" +
+	// "<td>" + json[i].userId + "</td>" + "</tr>"; 
+    // }
+	
+    // $("table").append(output);
+	// $(".load a").text("Load more");
+	// console.log(output);
+    // // console.log(json);
+  // } catch (error) {
+    // console.error(error.message);
+  // }
+// })
+// $(document).ready(function(){
+	// var rows = 20, rowsStart = 10;
+	
+		// rows +=10;
+		// $(".load").click(async function getData(event) {
+			// event.preventDefault();
+			// const url = "https://jsonplaceholder.typicode.com/posts";
+			// try {
+			// const response = await fetch(url);
+			// if (!response.ok) {
+			// throw new Error(`Response status: ${response.status}`);
+			// }
+	
+	
+			// const json = await response.json();
+			// let output = "<tr>";
+			// for (let i = rowsStart; i < rows; i++) {
+			// output += "<td>" + json[i].title + "</td>" + 
+				// "<td>" + json[i].id + "</td>" +
+				// "<td>" + json[i].userId + "</td>" + "</tr>"; 
+			// }
+	
+			// $("table").append(output);
+			// $(".load a").text("Load more");
+			// rowsStart+=10;
+			// console.log(output);
+			// } catch (error) {
+			// console.error(error.message);
+			// }
+		// })
+	
+// })
+//initially books display
+var rowsStart = 0; rowsEnd = 10;
+$(document).ready(function() {
+	$("#books").ready(function() {
+	$.ajax({
+		url: "data.json",
+		method: "GET",
+		success: function(data) {
+		
+		console.log("in");
+			let output = "<tr>";
+				for (let i =0; i < 10; i++) {
+				output += "<td id=\"title\">" + data[i].title + "</td>" + 
+				"<td>" + data[i].id + "</td>" +
+				"<td>" + data[i].userId + "</td>" + "</tr>"; 
+				}	
+				output += "</tr>";
+				$("table").append(output);
+				console.log(output);
+				$(".load a").text("Load more..");
+			}
+		});
+	});
+});
+
+//Load more
+var loadFrom = 10 , loadTo = rowsEnd;
+$(document).ready(function() {
+	$(".load").click(function(event) {
+	event.preventDefault();
+	$.ajax({
+		url: "data.json",
+		method: "GET",
+		success: function(data) {
+		console.log("win", loadTo);
+			let output = "<tr>";
+				for (let i = loadFrom; i < loadTo; i++) {
+				output += "<td id=\"title\">" + data[i].title + "</td>" + 
+				"<td>" + data[i].id + "</td>" +
+				"<td>" + data[i].userId + "</td>" + "</tr>"; 
+				}	
+				output += "</tr>";
+				$("table").append(output);
+			}
+		});
+		loadFrom = loadTo;
+		loadTo+=10;
+		if(loadTo > 100)
+		{
+			$(".load a").text("No more records");
+		}
+	});
+		
+});
+
+//search books
+$(document).ready(function(){
+  $(".searchInput").on("keyup", function() {
+	//console.log("i am in");
+    var value = $(this).val().toLowerCase();
+	//console.log(value);
+    // var input, filter, table, tr, td, i, txtValue;
+	  // input = document.getElementById("myInput");
+	  // filter = input.value.toUpperCase();
+	  // table = document.getElementById("myTable");
+	  // tr = table.getElementsByTagName("tr");
+	  
+	$('table tbody tr').each(function(index, item) {
+	console.log("in");
+    var title = $(this).find("#title").text();
+	console.log(title); 
+	if(title.toLowerCase().indexOf(value) > -1){
+		//$('table tr').show("");
+		console.log($('table tr').show(""));
+		console.log("hello", item);
+		return $(item).show("");
+  } 
+	else {
+		console.log($('table tr').hide());
+		console.log("hello23" , item);
+		//$('table tr').removeAttr("style").hide();;
+		return $(item).hide();
+	}
+	});
+	  
+		
+	  // Loop through all table rows, and hide those who don't match the search query
+	  // for (i = 0; i < tr.length; i++) {
+		// td = tr[i].getElementsByTagName("td")[0];
+		// if (td) {
+		  // txtValue = td.textContent || td.innerText;
+		  // if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			// tr[i].style.display = "";
+		  // } else {
+			// tr[i].style.display = "none";
+		  // }
+		// }
+	  // }
+  });
+});
+
+
+
+
+
+// $(document).ready(function(){
+  // $(".searchInput").on("keyup", function() {
+    // var value = $(this).val().toLowerCase();
+    // var response = $(data).filter(function(i, n)
+            // {
+                // return   n.name !== value;
+            // });
+
+            // $.each(response, function(i) {
+                // alert(response[i].commentText);
+            // });
+  // });
+// });
+
+
+
