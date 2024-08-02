@@ -1,0 +1,418 @@
+To convert your HTML file into an Angular application, you'll need to structure your project into an Angular-friendly format. Below is a guide on how to segregate your HTML content and create the project hierarchy for an Angular application.
+
+### 1. **Create the Angular Project**
+
+First, create a new Angular project using the Angular CLI:
+
+```bash
+ng new online-bookstore
+cd online-bookstore
+```
+
+### 2. **Project Hierarchy**
+
+Here’s how you might structure your Angular project based on the provided HTML:
+
+```
+online-bookstore/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── header/
+│   │   │   │   ├── header.component.html
+│   │   │   │   ├── header.component.scss
+│   │   │   │   ├── header.component.ts
+│   │   │   ├── navbar/
+│   │   │   │   ├── navbar.component.html
+│   │   │   │   ├── navbar.component.scss
+│   │   │   │   ├── navbar.component.ts
+│   │   │   ├── footer/
+│   │   │   │   ├── footer.component.html
+│   │   │   │   ├── footer.component.scss
+│   │   │   │   ├── footer.component.ts
+│   │   │   ├── featured-books/
+│   │   │   │   ├── featured-books.component.html
+│   │   │   │   ├── featured-books.component.scss
+│   │   │   │   ├── featured-books.component.ts
+│   │   │   ├── book-add/
+│   │   │   │   ├── book-add.component.html
+│   │   │   │   ├── book-add.component.scss
+│   │   │   │   ├── book-add.component.ts
+│   │   │   ├── customer-reviews/
+│   │   │   │   ├── customer-reviews.component.html
+│   │   │   │   ├── customer-reviews.component.scss
+│   │   │   │   ├── customer-reviews.component.ts
+│   │   │   ├── about-us/
+│   │   │   │   ├── about-us.component.html
+│   │   │   │   ├── about-us.component.scss
+│   │   │   │   ├── about-us.component.ts
+│   │   │   ├── contact-us/
+│   │   │   │   ├── contact-us.component.html
+│   │   │   │   ├── contact-us.component.scss
+│   │   │   │   ├── contact-us.component.ts
+│   │   ├── app.module.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.scss
+│   │   ├── app.component.ts
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── reclaimYourHeart.png
+│   │   │   ├── avatar.png
+│   ├── styles.scss
+│
+├── angular.json
+├── package.json
+└── ...
+
+```
+
+### 3. **Create Components**
+
+You’ll create individual components for different sections of your HTML. Use Angular CLI to generate components:
+
+```bash
+ng generate component components/header
+ng generate component components/navbar
+ng generate component components/footer
+ng generate component components/featured-books
+ng generate component components/book-add
+ng generate component components/customer-reviews
+ng generate component components/about-us
+ng generate component components/contact-us
+```
+
+### 4. **Component Implementation**
+
+#### **Header Component**
+
+**header.component.html**
+```html
+<header>Welcome to My Online Bookstore</header>
+```
+
+**header.component.scss**
+```scss
+/* Add header styles here */
+```
+
+**header.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+export class HeaderComponent { }
+```
+
+#### **Navbar Component**
+
+**navbar.component.html**
+```html
+<nav>
+    <a class="active" href="#">Home</a>
+    <a href="#books">Books</a>
+    <a href="#contact">Contact</a>
+    <div class="search">
+        <input id="searchInput" type="text" placeholder="Search Book..">
+    </div>
+</nav>
+```
+
+**navbar.component.scss**
+```scss
+/* Add navbar styles here */
+```
+
+**navbar.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
+})
+export class NavbarComponent { }
+```
+
+#### **Footer Component**
+
+**footer.component.html**
+```html
+<footer>© 2024 My Online Bookstore</footer>
+```
+
+**footer.component.scss**
+```scss
+/* Add footer styles here */
+```
+
+**footer.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss']
+})
+export class FooterComponent { }
+```
+
+#### **Featured Books Component**
+
+**featured-books.component.html**
+```html
+<section>
+    <h1>Featured Books</h1>
+    <img src="/assets/images/reclaimYourHeart.png" alt="Book Cover Image" class="center" />
+    <p class="para">
+        <strong>Reclaim Your Heart</strong> is not just a self-help book.
+        It is a manual about the journey of the heart in
+        and out of the ocean of this life. It is a book about
+        how to keep your heart from sinking to the depths of
+        that ocean, and what to do when it does.
+    </p>
+    <p class="para">
+        It is a book
+        about redemption, about hope, about renewal. Every heart
+        can heal, and each moment is created to bring us closer
+        to that transformative return. Reclaim Your Heart is
+        about finding that moment when everything stopsand
+        suddenly looks different. It is about finding your own
+        awakening. And then returning to the better, truer, and
+        freer version of yourself.
+    </p>
+    <hr>
+    <h1> List of Books</h1>
+    <table id="books" class="centerTable">
+        <thead>
+            <tr class="tableHeader">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>ImageUrl</th>
+            </tr>
+        </thead>
+        <tbody id="tablebody">
+        </tbody>
+    </table>
+    <span class="load">
+        <a href="#"></a>
+    </span>
+</section>
+```
+
+**featured-books.component.scss**
+```scss
+/* Add featured books styles here */
+```
+
+**featured-books.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-featured-books',
+  templateUrl: './featured-books.component.html',
+  styleUrls: ['./featured-books.component.scss']
+})
+export class FeaturedBooksComponent { }
+```
+
+#### **Book Add Component**
+
+**book-add.component.html**
+```html
+<section class="bookadd">
+    <h1>Add Book</h1>
+    <form method="post" action="https://localhost:7200/api/Book">
+        <label>Title</label>
+        <input type="text" id="Title" placeholder="Enter title.."><br>
+        <label>Author</label>
+        <input type="text" id="Author" placeholder="Enter author..">
+        <label>Image Url</label>
+        <input type="text" id="Imageurl" placeholder="Enter image url..">
+        <label>Price</label>
+        <input type="text" id="Price" placeholder="Enter price..">
+        <label>Description</label>
+        <textarea id="Description" placeholder="Enter description.."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+```
+
+**book-add.component.scss**
+```scss
+/* Add book add styles here */
+```
+
+**book-add.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-book-add',
+  templateUrl: './book-add.component.html',
+  styleUrls: ['./book-add.component.scss']
+})
+export class BookAddComponent { }
+```
+
+#### **Customer Reviews Component**
+
+**customer-reviews.component.html**
+```html
+<section>
+    <h1>Customer Reviews</h1>
+    <div class="container">
+        <img src="/assets/images/avatar.png" alt="Avatar">
+        <p><span>Nelson Mandela</span></p>
+        <p>This book is a grace. I really feel thankful.</p>
+    </div>
+
+    <div class="container">
+        <img src="/assets/images/avatar.png" alt="Avatar">
+        <p><span>Jim Collins</span></p>
+        <p>I feel so thankful and happy to read it. This book is amazing.</p>
+    </div>
+    <div class="container">
+        <img src="/assets/images/avatar.png" alt="Avatar">
+        <p><span>Adam John</span></p>
+
+
+        <p>Amazing!I feel so thankful. Love the writer's perception.</p>
+    </div>
+</section>
+```
+
+**customer-reviews.component.scss**
+```scss
+/* Add customer reviews styles here */
+```
+
+**customer-reviews.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-customer-reviews',
+  templateUrl: './customer-reviews.component.html',
+  styleUrls: ['./customer-reviews.component.scss']
+})
+export class CustomerReviewsComponent { }
+```
+
+#### **About Us Component**
+
+**about-us.component.html**
+```html
+<section class="about">
+    <h1>About Us</h1>
+    <p class="para">
+        Lorem Ipsum is simply dummy text of the
+        printing and type setting industry. Lorem Ipsum is simply dummy text of the
+        printing and type setting industry. <br>Lorem
+        Ipsum has been the industry's standard
+        dummy text ever since the 1500s, when
+        an unknown printer took a galley of type
+        and scrambled it to make a type specimen
+        book.
+    </p>
+</section>
+```
+
+**about-us.component.scss**
+```scss
+/* Add about us styles here */
+```
+
+**about-us.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-about-us',
+  templateUrl: './about-us.component.html',
+  styleUrls: ['./about-us.component.scss']
+})
+export class AboutUsComponent { }
+```
+
+#### **Contact Us Component**
+
+**contact-us.component.html**
+```html
+<section class="contactUs">
+    <hr>
+    <h1 id="contact">Contact Us</h1>
+    <form>
+        <label>Name</label>
+        <input type="text" placeholder="Enter name.."><br>
+        <label>Email</label>
+        <input type="Email" placeholder="Enter email..">
+        <label>Message</label>
+        <textarea placeholder="Enter your message here.."></textarea>
+        <button>Submit</button>
+    </form>
+</section>
+```
+
+**contact-us.component.scss**
+```scss
+/* Add contact us styles here */
+```
+
+**contact-us.component.ts**
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-contact-us',
+  templateUrl: './contact-us.component.html',
+  styleUrls: ['./contact-us.component.scss']
+})
+export class ContactUsComponent { }
+```
+
+### 5. **Update `app.component.html`**
+
+Update `app.component.html` to include your new components:
+
+```html
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<app-featured-books></app-featured-books>
+<app-book-add></app-book-add>
+<app-customer-reviews></app-customer-reviews>
+<app-about-us></app-about-us>
+<app-contact-us></app-contact-us>
+
+<app-footer></app-footer>
+```
+
+### 6. **Styles**
+
+Move your existing CSS to `styles.scss` or individual component SCSS files as needed. Adjust paths for images in the `assets` folder if required.
+
+### 7. **Dependencies**
+
+For any additional scripts or stylesheets, like Font Awesome, you can include them in the `angular.json` file under the `styles` and `scripts` arrays.
+
+### **Example for `angular.json`**
+
+```json file
+"styles": [
+  "src/styles.scss",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+],
+"scripts": []
+```
+
+With these steps, your Angular application will be properly structured and your HTML content will be divided into reusable components.
