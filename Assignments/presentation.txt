@@ -1,0 +1,243 @@
+Angular - Intro (Setup, Pre-req Installations)
+Angular (String Interpolation, Property Binding)
+Angular (Event Binding, Parent/Child Communication)
+Angular (Services)
+Angular (Directives)
+Angular (Forms)
+Angular (Routing)
+Angular (Http Request)
+
+
+Here is a suggested outline for beginner-level slides on Angular, 
+covering the topics you mentioned. Each section includes key points 
+and brief explanations suitable for an introductory presentation.
+
+---
+
+### **Slide 1: Introduction to Angular**
+- **Title**: Introduction to Angular
+- **Content**:
+  - Angular is a popular framework for building web applications.
+  - Developed and maintained by Google.
+  - Uses TypeScript as its primary language.
+
+---
+
+### **Slide 2: Setup and Pre-requisite Installations**
+- **Title**: Setting Up Angular
+- **Content**:
+  - **Install Node.js**: Angular requires Node.js. Download from [nodejs.org](https://nodejs.org).
+  - **Install Angular CLI**: 
+    ```bash
+    npm install -g @angular/cli
+    ```
+  - **Create a New Angular Project**: 
+    ```bash
+    ng new my-angular-app
+    ```
+  - **Navigate and Serve**:
+    ```bash
+    cd my-angular-app
+    ng serve
+    ```
+
+---
+
+### **Slide 3: String Interpolation**
+- **Title**: String Interpolation
+- **Content**:
+  - **Definition**: Embeds dynamic content in the template.
+  - **Syntax**: `{{ expression }}`
+  - **Example**:
+    ```html
+    <h1>Hello, {{ userName }}!</h1>
+    ```
+  - **In Component**:
+    ```typescript
+    export class AppComponent {
+      userName = 'Angular';
+    }
+    ```
+
+---
+
+### **Slide 4: Property Binding**
+- **Title**: Property Binding
+- **Content**:
+  - **Definition**: Binds a property of a DOM element to a component property.
+  - **Syntax**: `[property]="expression"`
+  - **Example**:
+    ```html
+    <img [src]="imageUrl" />
+    ```
+  - **In Component**:
+    ```typescript
+    export class AppComponent {
+      imageUrl = 'path/to/image.jpg';
+    }
+    ```
+
+---
+
+### **Slide 5: Event Binding**
+- **Title**: Event Binding
+- **Content**:
+  - **Definition**: Binds events to methods in the component.
+  - **Syntax**: `(event)="method()"`
+  - **Example**:
+    ```html
+    <button (click)="sayHello()">Click Me!</button>
+    ```
+  - **In Component**:
+    ```typescript
+    export class AppComponent {
+      sayHello() {
+        alert('Hello!');
+      }
+    }
+    ```
+
+---
+
+### **Slide 6: Parent/Child Communication**
+- **Title**: Parent/Child Communication
+- **Content**:
+  - **Input Binding**: Pass data from parent to child.
+    ```typescript
+    @Input() childData: string;
+    ```
+  - **Output Binding**: Emit events from child to parent.
+    ```typescript
+    @Output() eventEmitter = new EventEmitter<string>();
+    ```
+  - **Example**:
+    ```html
+    <app-child [parentData]="data" (notify)="handleEvent($event)"></app-child>
+    ```
+
+---
+
+### **Slide 7: Services**
+- **Title**: Services in Angular
+- **Content**:
+  - **Definition**: Used to share data or logic across components.
+  - **Create a Service**:
+    ```bash
+    ng generate service my-service
+    ```
+  - **Inject Service**: 
+    ```typescript
+    constructor(private myService: MyService) { }
+    ```
+  - **Service Example**:
+    ```typescript
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class MyService {
+      getData() {
+        return 'Some data';
+      }
+    }
+    ```
+
+---
+
+### **Slide 8: Directives**
+- **Title**: Directives
+- **Content**:
+  - **Definition**: Directives are special tokens in the DOM 
+that tell the library to do something.
+  - **Types**:
+    - **Structural Directives**: `*ngIf`, `*ngFor`
+    - **Attribute Directives**: `ngClass`, `ngStyle`
+  - **Example**:
+    ```html
+    <div *ngIf="isVisible">Visible Content</div>
+    ```
+
+---
+
+### **Slide 9: Forms**
+- **Title**: Forms in Angular
+- **Content**:
+  - **Reactive Forms**:
+    - **Create Form**:
+      ```typescript
+      this.form = new FormGroup({
+        name: new FormControl('')
+      });
+      ```
+    - **Example**:
+      ```html
+      <form [formGroup]="form">
+        <input formControlName="name" />
+      </form>
+      ```
+  - **Template-Driven Forms**:
+    - **Example**:
+      ```html
+      <form #myForm="ngForm">
+        <input name="name" ngModel />
+      </form>
+      ```
+
+---
+
+### **Slide 10: Routing**
+- **Title**: Routing in Angular
+- **Content**:
+  - **Definition**: Allows navigation between different views 
+or components.
+  - **Configure Routes**:
+    ```typescript
+    const routes: Routes = [
+      { path: 'home', component: HomeComponent },
+      { path: 'about', component: AboutComponent }
+    ];
+    ```
+  - **Use RouterModule**:
+    ```typescript
+    @NgModule({
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+    })
+    export class AppRoutingModule { }
+    ```
+
+---
+
+### **Slide 11: Http Request**
+- **Title**: Http Requests in Angular
+- **Content**:
+  - **HttpClient Module**: Used for making HTTP requests.
+  - **Import HttpClient**:
+    ```typescript
+    import { HttpClient } from '@angular/common/http';
+    ```
+  - **Make a Request**:
+    ```typescript
+    this.http.get('https://api.example.com/data').subscribe(data => {
+      console.log(data);
+    });
+    ```
+  - **Provide HttpClientModule**:
+    ```typescript
+    @NgModule({
+      imports: [HttpClientModule]
+    })
+    export class AppModule { }
+    ```
+
+---
+
+### **Slide 12: Q&A**
+- **Title**: Questions & Answers
+- **Content**:
+  - Open floor for questions.
+  - Provide additional resources or documentation links.
+
+---
+
+Feel free to customize these slides further based on your audience and 
+their familiarity with Angular concepts.
