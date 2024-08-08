@@ -1,0 +1,86 @@
+
+
+
+/*
+  using System;
+
+public class Program
+{
+   
+    public static string NumberEncoding(string str)
+    {
+        char[] ArrayOfAlphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+        string ConvertedMessage = "";
+
+        foreach (char c in str)
+        {
+            if (Char.IsLetter(c))  
+            {
+                int LetterPosition = c - 'a' + 1; 
+                ConvertedMessage += LetterPosition.ToString();   
+            }
+            else
+            {
+                ConvertedMessage = ConvertedMessage+c; 
+            }
+        }
+
+        return ConvertedMessage;
+    }
+
+    public static void Main()
+    {
+        Console.WriteLine(NumberEncoding("hello 45!"));  // Output: "85121215 23151812!"
+        Console.WriteLine(NumberEncoding("abc xyz"));
+    }
+
+}
+    */
+
+/*
+using System;
+
+public class Program
+{
+    public static int Stockpicker(int[] arr)
+    {
+       
+        if (arr.Length < 2)
+            return -1;
+
+        int MaximumProfit = -1;   // cant be negative profit 
+
+       
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                
+                int profit = arr[j] - arr[i];
+
+                
+                if (profit > MaximumProfit)
+                {
+                    MaximumProfit = profit;
+                }
+            }
+        }
+
+        return MaximumProfit;
+    }
+
+    public static void Main()
+    {
+        // Example usage:
+        int[] arr = { 44, 30, 24, 32, 35, 30, 40, 38, 16 };
+        Console.WriteLine(Stockpicker(arr)); // Output: 16
+    }
+}
+//checking stock picker maximum profit
+
+*/
+
+
+
+
+
